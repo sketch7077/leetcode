@@ -1,0 +1,18 @@
+class Solution {
+    public int maxProfit(int[] prices) 
+    {
+        int aux[]=new int[prices.length];
+        aux[prices.length-1]=prices[prices.length-1];
+        for(int i=aux.length-2;i>=0;i--)
+        {
+            aux[i]=Math.max(prices[i],aux[i+1]);
+        }
+        int price=0;
+        for(int i=0;i<aux.length;i++)
+        {
+            if(price<(aux[i]-prices[i]))
+                price=aux[i]-prices[i];
+        }
+        return price;
+    }
+}
