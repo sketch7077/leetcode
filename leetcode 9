@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isPalindrome(int n) 
+    {   
+        if(n>=0 && n<=Integer.MAX_VALUE)
+        {
+            int s=0 ,  num=n , r=0;
+            while(num!=0)
+            {
+                 r=(r*10)+(num%10);
+                num/=10;
+            }
+            if( r == n)
+                return true;
+            return false;
+        }
+        return false;
+    }
+}
