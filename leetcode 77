@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) 
+    {
+        List<List<Integer>> result=new ArrayList();
+        generate(1 , n , new ArrayList() , result , k);
+            return result;
+    }
+    void generate(int start , int n , List<Integer> cur , List<List<Integer>> result  , int k)
+    {
+        if(cur.size()==k)
+        {
+            result.add(new ArrayList(cur));
+            return;
+        }
+        
+        for(int i=start ; i<=n ;i++)
+        {
+            cur.add(i);
+            generate(i+1 , n , cur , result , k);
+            cur.remove(cur.size() - 1 );
+        }
+    }
+}
