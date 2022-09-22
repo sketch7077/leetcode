@@ -1,0 +1,29 @@
+class Solution {
+    public int happy(int n)
+    {
+        int s=0;
+            while(n!=0)
+            {
+                s+=Math.pow( n%10 , 2);
+                n/=10;
+            }
+        return s;
+    }
+    
+     public boolean isHappy(int n) {
+        
+        if(n==1)
+            return true;
+         List<Integer> list=new ArrayList<>();
+        int s=happy(n);
+        while(s!=1)
+        {
+    
+            if(list.contains(s))
+                return false;
+            list.add(s);
+            s= happy(s);
+        }  
+         return true;
+    }
+}
