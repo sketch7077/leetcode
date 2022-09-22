@@ -1,0 +1,32 @@
+class Solution {
+    public int minDistance(String w, String w1) {
+        
+        int dp[][]=new int[w.length() +1][w1.length() +1];
+       
+        
+        for(int i=0;i<=w.length();i++)
+        {
+            for(int j=0;j<=w1.length();j++)
+            {
+                
+                if(i==0)
+                {  
+                    dp[i][j]=j;
+                 continue; 
+                }
+                
+                else if(j==0)
+                {   
+                    dp[i][j]=i;
+                    continue; 
+                }
+                    
+                else if(w.charAt(i-1) == w1.charAt(j-1))
+                    dp[i][j]=dp[i-1][j-1];
+                else
+                    dp[i][j]=1+ Math.min(dp[i-1][j-1] , Math.min(dp[i-1][j] ,dp[i][j-1]));
+            }
+        }
+        return dp[w.length()][w1.length()];
+    }
+}
